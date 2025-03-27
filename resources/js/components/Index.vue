@@ -153,9 +153,10 @@ export default {
         };
 
         const formatDate = (dateStr) => {
-            const date = new Date(dateStr);
-            return date.toLocaleDateString("pt-BR");
-        };
+    const date = new Date(dateStr);
+    // Ajustar para o fuso horário local sem alterar o horário
+    return new Date(date.getTime() + date.getTimezoneOffset() * 60000).toLocaleDateString("pt-BR");
+};
 
         const openDeleteConfirmation = (id) => {
             employeeIdToDelete.value = id;
