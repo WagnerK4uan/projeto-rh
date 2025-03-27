@@ -5,7 +5,9 @@
         <h2 class="mb-0 text-center">Editar Colaborador</h2>
       </div>
       <div class="card-body">
+
         <!-- Mensagens de Sucesso e Erro -->
+
         <div v-if="successMessage" class="alert alert-success text-center">
           {{ successMessage }}
         </div>
@@ -123,7 +125,7 @@ export default {
     const route = useRoute();
     const router = useRouter();
     const successMessage = ref("");
-    const errorMessage = ref(""); // Adicionando a variável para mensagens de erro
+    const errorMessage = ref("");
 
     // Função para normalizar CPF
     const normalizeCPF = (cpf) => {
@@ -206,7 +208,7 @@ export default {
       clearForm,
       updateEmployee,
       successMessage,
-      errorMessage, // Expondo a variável de erro
+      errorMessage,
       formatCPF
     };
   }
