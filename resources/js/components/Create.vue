@@ -45,6 +45,7 @@
                                 id="nickname"
                                 v-model="employee.nickname"
                                 placeholder="Digite o apelido..."
+                                
                             />
                         </div>
                         <div class="col-md-6">
