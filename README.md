@@ -39,15 +39,17 @@
     <div class="emoji-title">📦 Como Rodar Localmente</div>
     <p>Siga os passos abaixo para executar o projeto:</p>
     <div class="code-block">
-      git clone https://github.com/seu-usuario/seu-repo.git<br>
-      cd seu-repo<br>
+      git clone https://github.com/WagnerK4uan/projeto-rh.git<br>
+      cd projeto-rh<br>
       composer install<br>
       cp .env.example .env<br>
       php artisan key:generate<br>
       php artisan migrate<br>
-      php artisan serve
+      php artisan serve<br>
+ npm install<br>
+    npm run dev
     </div>
-    <p><strong>💡 Dica:</strong> Certifique-se de ter o MySQL rodando e o arquivo <code>.env</code> configurado corretamente com suas credenciais de banco de dados.</p>
+  <br>  <p><strong>💡 Dica:</strong> Certifique-se de ter o MySQL rodando e o arquivo <code>.env</code> configurado corretamente com suas credenciais de banco de dados.</p>
   </div>
 
   <div class="section">
