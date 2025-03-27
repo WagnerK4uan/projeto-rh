@@ -1,97 +1,117 @@
 <template>
     <div class="container mt-5">
-        <h1 class="mb-4">Colaboradores</h1>
-        <div v-if="successMessage" class="alert alert-success">
-            {{ successMessage }}
-        </div>
-        <div class="d-flex justify-content-end mb-4">
-            <router-link :to="{ name: 'Create' }" class="btn btn-success">
-                <i class="bi bi-plus-lg"></i> Cadastrar Novo Colaborador
+        <!-- Cabeçalho -->
+        <div
+            class="d-flex justify-content-between align-items-center mb-4 p-4 border rounded shadow-sm"
+        >
+            <h2 class="fw-bold">Colaboradores da Bruning</h2>
+            <router-link to="/create" class="btn btn-primary">
+                <font-awesome-icon :icon="['fas', 'user-plus']" class="me-1" />
+                Cadastrar
             </router-link>
         </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover table-bordered">
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Código</th>
-                        <th scope="col">Nome Completo</th>
-                        <th scope="col">Apelido</th>
-                        <th scope="col">CPF</th>
-                        <th scope="col">Cargo</th>
-                        <th scope="col" style="width: 20%">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="employee in employees" :key="employee.id">
-    <td>{{ employee.id }}</td>
-    <td>{{ employee.full_name }}</td>
-    <td>{{ employee.nickname }}</td> <!-- Aqui corrigimos para exibir o apelido -->
-    <td>{{ employee.cpf }}</td>
-    <td>{{ employee.position }}</td>
-    <td>
-        <router-link
-            :to="{
-                name: 'Edit',
-                params: { id: employee.id },
-            }"
-            class="btn btn-sm btn-outline-primary me-2"
-        >
-            <i class="bi bi-pencil-square me-1"></i> Editar
-        </router-link>
-        <button
-            class="btn btn-sm btn-outline-danger"
-            @click="openDeleteConfirmation(employee.id)"
-        >
-            <i class="bi bi-trash me-1"></i> Excluir
-        </button>
-    </td>
-</tr>
-                </tbody>
-            </table>
+        <!-- Mensagem de sucesso -->
+        <div v-if="successMessage" class="alert alert-success">
+            {{ successMessage }}
         </div>
-    </div>
 
-    <!-- Modal de Confirmação de Exclusão -->
-    <div
-        class="modal fade"
-        id="deleteConfirmationModal"
-        tabindex="-1"
-        aria-labelledby="deleteConfirmationModalLabel"
-        aria-hidden="true"
-        ref="deleteModal"
-    >
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteConfirmationModalLabel">
-                        Confirmar Exclusão
-                    </h5>
-                    <button
-                        type="button"
-                        class="btn-close"
-                        @click="closeModal"
-                        aria-label="Close"
-                    ></button>
+        <!-- Lista de colaboradores -->
+        <div class="border p-4 rounded shadow-sm">
+            <h3 class="fw-bold mb-4">Lista de Colaboradores</h3>
+
+            <div v-if="employees.length === 0" class="alert alert">
+                Nenhum colaborador encontrado.
+            </div>
+
+            <div
+                v-for="employee in employees"
+                :key="employee.id"
+                class="card shadow-sm mb-3"
+            >
+                <div
+                    class="card-body d-flex justify-content-between align-items-center"
+                >
+                    <div>
+                        <strong
+                            >{{ employee.id }} -
+                            {{ employee.full_name }}</strong
+                        >
+                        <div>
+                            Nascimento:
+                            <strong>{{
+                                formatDate(employee.birth_date)
+                            }}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <router-link
+                            :to="{ name: 'Show', params: { id: employee.id } }"
+                            class="btn btn-outline-primary btn-sm me-2"
+                        >
+                            <font-awesome-icon :icon="['fas', 'search']" />
+                        </router-link>
+                        <router-link
+                            :to="{ name: 'Edit', params: { id: employee.id } }"
+                            class="btn btn-outline-primary btn-sm me-2"
+                        >
+                            <font-awesome-icon :icon="['fas', 'pencil-alt']" />
+                        </router-link>
+                        <button
+                            class="btn btn-outline-danger btn-sm"
+                            @click="openDeleteConfirmation(employee.id)"
+                        >
+                            <font-awesome-icon :icon="['fas', 'trash-alt']" />
+                        </button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    Tem certeza que deseja excluir este colaborador?
-                </div>
-                <div class="modal-footer">
-                    <button
-                        type="button"
-                        class="btn btn-secondary"
-                        @click="closeModal"
-                    >
-                        Cancelar
-                    </button>
-                    <button
-                        type="button"
-                        class="btn btn-danger"
-                        @click="confirmDelete"
-                    >
-                        Excluir
-                    </button>
+            </div>
+        </div>
+
+        <!-- Modal de confirmação -->
+        <div
+            class="modal fade"
+            id="deleteConfirmationModal"
+            tabindex="-1"
+            aria-labelledby="deleteConfirmationModalLabel"
+            aria-hidden="true"
+            ref="deleteModal"
+        >
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5
+                            class="modal-title"
+                            id="deleteConfirmationModalLabel"
+                        >
+                            Confirmar Exclusão
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            @click="closeModal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        Tem certeza que deseja excluir este colaborador?
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary btn-sm"
+                            @click="closeModal"
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-danger btn-sm"
+                            @click="confirmDelete"
+                        >
+                            Excluir
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,65 +121,66 @@
 <script>
 import { onMounted, ref } from "vue";
 import axios from "axios";
-import { useRouter } from "vue-router";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+    faList,
+    faUserPlus,
+    faPencilAlt,
+    faTrashAlt,
+    faSearch,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faList, faUserPlus, faPencilAlt, faTrashAlt, faSearch);
 
 export default {
+    components: { FontAwesomeIcon },
     setup() {
-        const router = useRouter();
         const employees = ref([]);
         const employeeIdToDelete = ref(null);
         const deleteModal = ref(null);
         const successMessage = ref("");
 
-        // Busca os colaboradores na API
         const fetchEmployees = async () => {
             try {
-                const uri = "http://127.0.0.1:8000/employees";
-                const response = await axios.get(uri);
+                const response = await axios.get(
+                    "http://127.0.0.1:8000/employees"
+                );
                 employees.value = response.data;
             } catch (error) {
                 console.error("Erro ao buscar colaboradores:", error);
             }
         };
 
-        // Abre o modal de confirmação de exclusão
+        const formatDate = (dateStr) => {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString("pt-BR");
+        };
+
         const openDeleteConfirmation = (id) => {
             employeeIdToDelete.value = id;
-            const modalInstance = new bootstrap.Modal(deleteModal.value);
-            modalInstance.show();
+            const modal = new bootstrap.Modal(deleteModal.value);
+            modal.show();
         };
 
-        // Fecha o modal
         const closeModal = () => {
-            const modalInstance = bootstrap.Modal.getInstance(
-                deleteModal.value
-            );
-            if (modalInstance) {
-                modalInstance.hide();
-            }
+            const modal = bootstrap.Modal.getInstance(deleteModal.value);
+            modal.hide();
         };
 
-        // Confirma a exclusão e deleta o colaborador
         const confirmDelete = async () => {
-            if (employeeIdToDelete.value !== null) {
-                await deleteEmployee(employeeIdToDelete.value);
-                closeModal();
-            }
-        };
-
-        // Função para deletar o colaborador
-        const deleteEmployee = async (id) => {
             try {
-                const uri = `http://127.0.0.1:8000/employees/${id}`;
-                await axios.delete(uri);
-                employees.value = employees.value.filter(
-                    (employee) => employee.id !== id
+                await axios.delete(
+                    `http://127.0.0.1:8000/employees/${employeeIdToDelete.value}`
                 );
                 successMessage.value = "Colaborador excluído com sucesso!";
-                // Limpa a mensagem após alguns segundos
+                fetchEmployees();
+                closeModal();
+
+                // Limpar a mensagem de sucesso após 3 segundos
                 setTimeout(() => {
                     successMessage.value = "";
-                }, 2000);
+                }, 2200); // 3 segundos
             } catch (error) {
                 console.error("Erro ao excluir colaborador:", error);
             }
@@ -169,11 +190,11 @@ export default {
 
         return {
             employees,
+            formatDate,
             openDeleteConfirmation,
-            confirmDelete,
-            deleteEmployee,
-            deleteModal,
             closeModal,
+            confirmDelete,
+            deleteModal,
             successMessage,
         };
     },

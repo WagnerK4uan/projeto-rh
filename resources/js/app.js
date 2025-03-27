@@ -7,6 +7,7 @@ import App from './App.vue';
 import Create from './components/Create.vue';
 import Index from './components/Index.vue';
 import Edit from './components/Edit.vue';
+import Show from './components/Show.vue';
 
 // Define your routes
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
         name: 'Create',
         path: '/create',
         component: Create
+    },
+    {
+        name: 'Show',
+        path: '/show/:id',
+        component: Show
     },
 ];
 
