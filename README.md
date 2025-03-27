@@ -1,66 +1,61 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<body>
 
-## About Laravel
+  <div class="section">
+    <div class="emoji-title">👨‍💼 <strong>Projeto RH</strong></div>
+    <p>Sistema completo de Recursos Humanos, desenvolvido com <span class="highlight">Laravel (backend)</span> e <span class="highlight">Vue.js (frontend)</span>, focado na gestão de colaboradores.</p>
+  </div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+  <div class="section">
+    <div class="emoji-title">🧰 Tecnologias Utilizadas</div>
+    <ul>
+      <li>⚙️ <strong>Backend:</strong> Laravel (PHP)</li>
+      <li>🖥️ <strong>Frontend:</strong> Vue.js</li>
+      <li>🗄️ <strong>Banco de Dados:</strong> MySQL</li>
+      <li>🔐 <strong>APIs REST</strong> para comunicação entre frontend e backend</li>
+    </ul>
+  </div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  <div class="section">
+    <div class="emoji-title">📋 Descrição Geral</div>
+    <p>Este projeto tem como objetivo construir um <strong>sistema de RH eficiente, intuitivo e seguro</strong>. A plataforma possibilita o gerenciamento completo de informações de colaboradores.</p>
+  </div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  <div class="section">
+    <div class="emoji-title">✅ Funcionalidades Implementadas</div>
+    <ul>
+      <li>🧑‍💼 <strong>CRUD completo de:</strong></li>
+      <ul>
+        <li>Colaboradores</li>
+      </ul>
+      <li>🔄 Integração entre frontend e backend via APIs REST</li>
+      <li>🔐 Rotas protegidas para garantir a segurança do sistema</li>
+      <li>🎨 Interfaces desenvolvidas com base em protótipos visuais</li>
+      <li>💬 Comunicação eficiente entre camadas front e back</li>
+    </ul>
+  </div>
 
-## Learning Laravel
+  <div class="section">
+    <div class="emoji-title">📦 Como Rodar Localmente</div>
+    <p>Siga os passos abaixo para executar o projeto:</p>
+    <div class="code-block">
+      git clone https://github.com/seu-usuario/seu-repo.git<br>
+      cd seu-repo<br>
+      composer install<br>
+      cp .env.example .env<br>
+      php artisan key:generate<br>
+      php artisan migrate<br>
+      php artisan serve
+    </div>
+    <p><strong>💡 Dica:</strong> Certifique-se de ter o MySQL rodando e o arquivo <code>.env</code> configurado corretamente com suas credenciais de banco de dados.</p>
+  </div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+  <div class="section">
+    <div class="emoji-title">🧪 Executando Testes</div>
+    <div class="code-block">
+      php artisan test
+    </div>
+  </div>
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+</body>
+</html>
